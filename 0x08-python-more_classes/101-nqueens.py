@@ -1,1 +1,126 @@
-{"payload":{"allShortcutsEnabled":false,"fileTree":{"0x08-python-more_classes":{"items":[{"name":"0-rectangle.py","path":"0x08-python-more_classes/0-rectangle.py","contentType":"file"},{"name":"1-rectangle.py","path":"0x08-python-more_classes/1-rectangle.py","contentType":"file"},{"name":"101-nqueens.py","path":"0x08-python-more_classes/101-nqueens.py","contentType":"file"},{"name":"2-rectangle.py","path":"0x08-python-more_classes/2-rectangle.py","contentType":"file"},{"name":"3-rectangle.py","path":"0x08-python-more_classes/3-rectangle.py","contentType":"file"},{"name":"4-rectangle.py","path":"0x08-python-more_classes/4-rectangle.py","contentType":"file"},{"name":"5-rectangle.py","path":"0x08-python-more_classes/5-rectangle.py","contentType":"file"},{"name":"6-rectangle.py","path":"0x08-python-more_classes/6-rectangle.py","contentType":"file"},{"name":"7-rectangle.py","path":"0x08-python-more_classes/7-rectangle.py","contentType":"file"},{"name":"8-rectangle.py","path":"0x08-python-more_classes/8-rectangle.py","contentType":"file"},{"name":"9-rectangle.py","path":"0x08-python-more_classes/9-rectangle.py","contentType":"file"},{"name":"README.md","path":"0x08-python-more_classes/README.md","contentType":"file"}],"totalCount":12},"":{"items":[{"name":"0x00-python-hello_world","path":"0x00-python-hello_world","contentType":"directory"},{"name":"0x01-python-if_else_loops_functions","path":"0x01-python-if_else_loops_functions","contentType":"directory"},{"name":"0x02-python-import_modules","path":"0x02-python-import_modules","contentType":"directory"},{"name":"0x03-python-data_structures","path":"0x03-python-data_structures","contentType":"directory"},{"name":"0x04-python-more_data_structures","path":"0x04-python-more_data_structures","contentType":"directory"},{"name":"0x05-python-exceptions","path":"0x05-python-exceptions","contentType":"directory"},{"name":"0x06-python-classes","path":"0x06-python-classes","contentType":"directory"},{"name":"0x07-python-test_driven_development","path":"0x07-python-test_driven_development","contentType":"directory"},{"name":"0x08-python-more_classes","path":"0x08-python-more_classes","contentType":"directory"},{"name":"0x09-python-everything_is_object","path":"0x09-python-everything_is_object","contentType":"directory"},{"name":"0x0A-python-inheritance","path":"0x0A-python-inheritance","contentType":"directory"},{"name":"0x0B-python-input_output","path":"0x0B-python-input_output","contentType":"directory"},{"name":"0x0C-python-almost_a_circle","path":"0x0C-python-almost_a_circle","contentType":"directory"},{"name":"0x0D-SQL_introduction","path":"0x0D-SQL_introduction","contentType":"directory"},{"name":"0x0E-SQL_more_queries","path":"0x0E-SQL_more_queries","contentType":"directory"},{"name":"0x10-python-network_0","path":"0x10-python-network_0","contentType":"directory"},{"name":"0x11-python-network_1","path":"0x11-python-network_1","contentType":"directory"},{"name":"0x12-javascript-warm_up","path":"0x12-javascript-warm_up","contentType":"directory"},{"name":"0x14-javascript-web_scraping","path":"0x14-javascript-web_scraping","contentType":"directory"},{"name":"README.md","path":"README.md","contentType":"file"}],"totalCount":20}},"fileTreeProcessingTime":5.443657999999999,"foldersToFetch":[],"reducedMotionEnabled":null,"repo":{"id":538478590,"defaultBranch":"master","name":"alx-higher_level_programming","ownerLogin":"BrightDaniel","currentUserCanPush":false,"isFork":false,"isEmpty":false,"createdAt":"2022-09-19T11:56:08.000Z","ownerAvatar":"https://avatars.githubusercontent.com/u/107191784?v=4","public":true,"private":false,"isOrgOwned":false},"symbolsExpanded":false,"treeExpanded":true,"refInfo":{"name":"master","listCacheKey":"v0:1676222179.4741812","canEdit":false,"refType":"branch","currentOid":"fc18c61e4ee711bc8be8cfc9b38170c17175c12a"},"path":"0x08-python-more_classes/101-nqueens.py","currentUser":null,"blob":{"rawLines":["#!/usr/bin/python3","\"\"\"","nqueens backtracking program to print the coordinates of n queens","on an nxn grid such that they are all in non-attacking positions","\"\"\"","","","from sys import argv","","if __name__ == \"__main__\":","    a = []","    if len(argv) != 2:","        print(\"Usage: nqueens N\")","        exit(1)","    if argv[1].isdigit() is False:","        print(\"N must be a number\")","        exit(1)","    n = int(argv[1])","    if n < 4:","        print(\"N must be at least 4\")","        exit(1)","","    # initialize the answer list","    for i in range(n):","        a.append([i, None])","","    def already_exists(y):","        \"\"\"check that a queen does not already exist in that y value\"\"\"","        for x in range(n):","            if y == a[x][1]:","                return True","        return False","","    def reject(x, y):","        \"\"\"determines whether or not to reject the solution\"\"\"","        if (already_exists(y)):","            return False","        i = 0","        while(i < x):","            if abs(a[i][1] - y) == abs(i - x):","                return False","            i += 1","        return True","","    def clear_a(x):","        \"\"\"clears the answers from the point of failure on\"\"\"","        for i in range(x, n):","            a[i][1] = None","","    def nqueens(x):","        \"\"\"recursive backtracking function to find the solution\"\"\"","        for y in range(n):","            clear_a(x)","            if reject(x, y):","                a[x][1] = y","                if (x == n - 1):  # accepts the solution","                    print(a)","                else:","                    nqueens(x + 1)  # moves on to next x value to continue","","    # start the recursive process at x = 0","    nqueens(0)"],"stylingDirectives":[[{"start":0,"end":18,"cssClass":"pl-c"}],[{"start":0,"end":3,"cssClass":"pl-s"}],[{"start":0,"end":65,"cssClass":"pl-s"}],[{"start":0,"end":64,"cssClass":"pl-s"}],[{"start":0,"end":3,"cssClass":"pl-s"}],[],[],[{"start":0,"end":4,"cssClass":"pl-k"},{"start":5,"end":8,"cssClass":"pl-s1"},{"start":9,"end":15,"cssClass":"pl-k"},{"start":16,"end":20,"cssClass":"pl-s1"}],[],[{"start":0,"end":2,"cssClass":"pl-k"},{"start":3,"end":11,"cssClass":"pl-s1"},{"start":12,"end":14,"cssClass":"pl-c1"},{"start":15,"end":25,"cssClass":"pl-s"}],[{"start":4,"end":5,"cssClass":"pl-s1"},{"start":6,"end":7,"cssClass":"pl-c1"}],[{"start":4,"end":6,"cssClass":"pl-k"},{"start":7,"end":10,"cssClass":"pl-en"},{"start":11,"end":15,"cssClass":"pl-s1"},{"start":17,"end":19,"cssClass":"pl-c1"},{"start":20,"end":21,"cssClass":"pl-c1"}],[{"start":8,"end":13,"cssClass":"pl-en"},{"start":14,"end":32,"cssClass":"pl-s"}],[{"start":8,"end":12,"cssClass":"pl-en"},{"start":13,"end":14,"cssClass":"pl-c1"}],[{"start":4,"end":6,"cssClass":"pl-k"},{"start":7,"end":11,"cssClass":"pl-s1"},{"start":12,"end":13,"cssClass":"pl-c1"},{"start":15,"end":22,"cssClass":"pl-en"},{"start":25,"end":27,"cssClass":"pl-c1"},{"start":28,"end":33,"cssClass":"pl-c1"}],[{"start":8,"end":13,"cssClass":"pl-en"},{"start":14,"end":34,"cssClass":"pl-s"}],[{"start":8,"end":12,"cssClass":"pl-en"},{"start":13,"end":14,"cssClass":"pl-c1"}],[{"start":4,"end":5,"cssClass":"pl-s1"},{"start":6,"end":7,"cssClass":"pl-c1"},{"start":8,"end":11,"cssClass":"pl-en"},{"start":12,"end":16,"cssClass":"pl-s1"},{"start":17,"end":18,"cssClass":"pl-c1"}],[{"start":4,"end":6,"cssClass":"pl-k"},{"start":7,"end":8,"cssClass":"pl-s1"},{"start":9,"end":10,"cssClass":"pl-c1"},{"start":11,"end":12,"cssClass":"pl-c1"}],[{"start":8,"end":13,"cssClass":"pl-en"},{"start":14,"end":36,"cssClass":"pl-s"}],[{"start":8,"end":12,"cssClass":"pl-en"},{"start":13,"end":14,"cssClass":"pl-c1"}],[],[{"start":4,"end":32,"cssClass":"pl-c"}],[{"start":4,"end":7,"cssClass":"pl-k"},{"start":8,"end":9,"cssClass":"pl-s1"},{"start":10,"end":12,"cssClass":"pl-c1"},{"start":13,"end":18,"cssClass":"pl-en"},{"start":19,"end":20,"cssClass":"pl-s1"}],[{"start":8,"end":9,"cssClass":"pl-s1"},{"start":10,"end":16,"cssClass":"pl-en"},{"start":18,"end":19,"cssClass":"pl-s1"},{"start":21,"end":25,"cssClass":"pl-c1"}],[],[{"start":4,"end":7,"cssClass":"pl-k"},{"start":8,"end":22,"cssClass":"pl-en"},{"start":23,"end":24,"cssClass":"pl-s1"}],[{"start":8,"end":71,"cssClass":"pl-s"}],[{"start":8,"end":11,"cssClass":"pl-k"},{"start":12,"end":13,"cssClass":"pl-s1"},{"start":14,"end":16,"cssClass":"pl-c1"},{"start":17,"end":22,"cssClass":"pl-en"},{"start":23,"end":24,"cssClass":"pl-s1"}],[{"start":12,"end":14,"cssClass":"pl-k"},{"start":15,"end":16,"cssClass":"pl-s1"},{"start":17,"end":19,"cssClass":"pl-c1"},{"start":20,"end":21,"cssClass":"pl-s1"},{"start":22,"end":23,"cssClass":"pl-s1"},{"start":25,"end":26,"cssClass":"pl-c1"}],[{"start":16,"end":22,"cssClass":"pl-k"},{"start":23,"end":27,"cssClass":"pl-c1"}],[{"start":8,"end":14,"cssClass":"pl-k"},{"start":15,"end":20,"cssClass":"pl-c1"}],[],[{"start":4,"end":7,"cssClass":"pl-k"},{"start":8,"end":14,"cssClass":"pl-en"},{"start":15,"end":16,"cssClass":"pl-s1"},{"start":18,"end":19,"cssClass":"pl-s1"}],[{"start":8,"end":62,"cssClass":"pl-s"}],[{"start":8,"end":10,"cssClass":"pl-k"},{"start":12,"end":26,"cssClass":"pl-en"},{"start":27,"end":28,"cssClass":"pl-s1"}],[{"start":12,"end":18,"cssClass":"pl-k"},{"start":19,"end":24,"cssClass":"pl-c1"}],[{"start":8,"end":9,"cssClass":"pl-s1"},{"start":10,"end":11,"cssClass":"pl-c1"},{"start":12,"end":13,"cssClass":"pl-c1"}],[{"start":8,"end":13,"cssClass":"pl-k"},{"start":14,"end":15,"cssClass":"pl-s1"},{"start":16,"end":17,"cssClass":"pl-c1"},{"start":18,"end":19,"cssClass":"pl-s1"}],[{"start":12,"end":14,"cssClass":"pl-k"},{"start":15,"end":18,"cssClass":"pl-en"},{"start":19,"end":20,"cssClass":"pl-s1"},{"start":21,"end":22,"cssClass":"pl-s1"},{"start":24,"end":25,"cssClass":"pl-c1"},{"start":27,"end":28,"cssClass":"pl-c1"},{"start":29,"end":30,"cssClass":"pl-s1"},{"start":32,"end":34,"cssClass":"pl-c1"},{"start":35,"end":38,"cssClass":"pl-en"},{"start":39,"end":40,"cssClass":"pl-s1"},{"start":41,"end":42,"cssClass":"pl-c1"},{"start":43,"end":44,"cssClass":"pl-s1"}],[{"start":16,"end":22,"cssClass":"pl-k"},{"start":23,"end":28,"cssClass":"pl-c1"}],[{"start":12,"end":13,"cssClass":"pl-s1"},{"start":14,"end":16,"cssClass":"pl-c1"},{"start":17,"end":18,"cssClass":"pl-c1"}],[{"start":8,"end":14,"cssClass":"pl-k"},{"start":15,"end":19,"cssClass":"pl-c1"}],[],[{"start":4,"end":7,"cssClass":"pl-k"},{"start":8,"end":15,"cssClass":"pl-en"},{"start":16,"end":17,"cssClass":"pl-s1"}],[{"start":8,"end":61,"cssClass":"pl-s"}],[{"start":8,"end":11,"cssClass":"pl-k"},{"start":12,"end":13,"cssClass":"pl-s1"},{"start":14,"end":16,"cssClass":"pl-c1"},{"start":17,"end":22,"cssClass":"pl-en"},{"start":23,"end":24,"cssClass":"pl-s1"},{"start":26,"end":27,"cssClass":"pl-s1"}],[{"start":12,"end":13,"cssClass":"pl-s1"},{"start":14,"end":15,"cssClass":"pl-s1"},{"start":17,"end":18,"cssClass":"pl-c1"},{"start":20,"end":21,"cssClass":"pl-c1"},{"start":22,"end":26,"cssClass":"pl-c1"}],[],[{"start":4,"end":7,"cssClass":"pl-k"},{"start":8,"end":15,"cssClass":"pl-en"},{"start":16,"end":17,"cssClass":"pl-s1"}],[{"start":8,"end":66,"cssClass":"pl-s"}],[{"start":8,"end":11,"cssClass":"pl-k"},{"start":12,"end":13,"cssClass":"pl-s1"},{"start":14,"end":16,"cssClass":"pl-c1"},{"start":17,"end":22,"cssClass":"pl-en"},{"start":23,"end":24,"cssClass":"pl-s1"}],[{"start":12,"end":19,"cssClass":"pl-en"},{"start":20,"end":21,"cssClass":"pl-s1"}],[{"start":12,"end":14,"cssClass":"pl-k"},{"start":15,"end":21,"cssClass":"pl-en"},{"start":22,"end":23,"cssClass":"pl-s1"},{"start":25,"end":26,"cssClass":"pl-s1"}],[{"start":16,"end":17,"cssClass":"pl-s1"},{"start":18,"end":19,"cssClass":"pl-s1"},{"start":21,"end":22,"cssClass":"pl-c1"},{"start":24,"end":25,"cssClass":"pl-c1"},{"start":26,"end":27,"cssClass":"pl-s1"}],[{"start":16,"end":18,"cssClass":"pl-k"},{"start":20,"end":21,"cssClass":"pl-s1"},{"start":22,"end":24,"cssClass":"pl-c1"},{"start":25,"end":26,"cssClass":"pl-s1"},{"start":27,"end":28,"cssClass":"pl-c1"},{"start":29,"end":30,"cssClass":"pl-c1"},{"start":34,"end":56,"cssClass":"pl-c"}],[{"start":20,"end":25,"cssClass":"pl-en"},{"start":26,"end":27,"cssClass":"pl-s1"}],[{"start":16,"end":20,"cssClass":"pl-k"}],[{"start":20,"end":27,"cssClass":"pl-en"},{"start":28,"end":29,"cssClass":"pl-s1"},{"start":30,"end":31,"cssClass":"pl-c1"},{"start":32,"end":33,"cssClass":"pl-c1"},{"start":36,"end":74,"cssClass":"pl-c"}],[],[{"start":4,"end":42,"cssClass":"pl-c"}],[{"start":4,"end":11,"cssClass":"pl-en"},{"start":12,"end":13,"cssClass":"pl-c1"}]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/BrightDaniel/alx-higher_level_programming/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/BrightDaniel/alx-higher_level_programming/security/dependabot","repoSecurityAndAnalysisPath":"/BrightDaniel/alx-higher_level_programming/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"101-nqueens.py","displayUrl":"https://github.com/BrightDaniel/alx-higher_level_programming/blob/master/0x08-python-more_classes/101-nqueens.py?raw=true","headerInfo":{"blobSize":"1.59 KB","deleteInfo":{"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":"https://desktop.github.com","gitLfsPath":null,"onBranch":true,"shortPath":"710b925","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2FBrightDaniel%2Falx-higher_level_programming%2Fblob%2Fmaster%2F0x08-python-more_classes%2F101-nqueens.py","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"62","truncatedSloc":"53"},"mode":"file"},"image":false,"isCodeownersFile":null,"isPlain":false,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Python","languageID":303,"large":false,"loggedIn":false,"newDiscussionPath":"/BrightDaniel/alx-higher_level_programming/discussions/new","newIssuePath":"/BrightDaniel/alx-higher_level_programming/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/BrightDaniel/alx-higher_level_programming/blob/master/0x08-python-more_classes/101-nqueens.py","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/BrightDaniel/alx-higher_level_programming/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"shortPath":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"BrightDaniel","repoName":"alx-higher_level_programming","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":false,"symbols":[{"name":"already_exists","kind":"function","identStart":563,"identEnd":577,"extentStart":559,"extentEnd":758,"fullyQualifiedName":"already_exists","identUtf16":{"start":{"lineNumber":26,"utf16Col":8},"end":{"lineNumber":26,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":26,"utf16Col":4},"end":{"lineNumber":31,"utf16Col":20}}},{"name":"reject","kind":"function","identStart":768,"identEnd":774,"extentStart":764,"extentEnd":1052,"fullyQualifiedName":"reject","identUtf16":{"start":{"lineNumber":33,"utf16Col":8},"end":{"lineNumber":33,"utf16Col":14}},"extentUtf16":{"start":{"lineNumber":33,"utf16Col":4},"end":{"lineNumber":42,"utf16Col":19}}},{"name":"clear_a","kind":"function","identStart":1062,"identEnd":1069,"extentStart":1058,"extentEnd":1192,"fullyQualifiedName":"clear_a","identUtf16":{"start":{"lineNumber":44,"utf16Col":8},"end":{"lineNumber":44,"utf16Col":15}},"extentUtf16":{"start":{"lineNumber":44,"utf16Col":4},"end":{"lineNumber":47,"utf16Col":26}}},{"name":"nqueens","kind":"function","identStart":1202,"identEnd":1209,"extentStart":1198,"extentEnd":1530,"fullyQualifiedName":"nqueens","identUtf16":{"start":{"lineNumber":49,"utf16Col":8},"end":{"lineNumber":49,"utf16Col":15}},"extentUtf16":{"start":{"lineNumber":49,"utf16Col":4},"end":{"lineNumber":58,"utf16Col":34}}}]}},"copilotInfo":null,"csrf_tokens":{"/BrightDaniel/alx-higher_level_programming/branches":{"post":"eMhNglrfCS5-6upLvlOokijKU6bR8-x6YN1aDssI2sVzShXjqUL5bW6LmOFx5V6hrFrztfpd4H73NEY3Uw5j0Q"},"/repos/preferences":{"post":"NLHlXdGTmfhdd1R75499eswvFNco1DYQXBFCkDP51Bb_Q02bhYB9tBNya6fXOjpS4NL-pv0D0jvvneoYWlF0cg"}}},"title":"alx-higher_level_programming/0x08-python-more_classes/101-nqueens.py at master · BrightDaniel/alx-higher_level_programming"}
+#!/usr/bin/python3
+"""Solves the N-queens puzzle"""
+
+import sys
+
+
+def init_board(n):
+    """Initialize an `n`x`n` sized chessboard with 0's."""
+    board = []
+    [board.append([]) for i in range(n)]
+    [row.append(' ') for i in range(n) for row in board]
+    return (board)
+
+
+def board_deepcopy(board):
+    """Return a deepcopy of a chessboard."""
+    if isinstance(board, list):
+        return list(map(board_deepcopy, board))
+    return (board)
+
+
+def get_solution(board):
+    """Return the list of lists representation of a solved chessboard."""
+    solution = []
+    for r in range(len(board)):
+        for c in range(len(board)):
+            if board[r][c] == "Q":
+                solution.append([r, c])
+                break
+    return (solution)
+
+
+def xout(board, row, col):
+    """X out spots on a chessboard.
+
+    All spots where non-attacking queens can no
+    longer be played are X-ed out.
+
+    Args:
+        board (list): The current working chessboard.
+        row (int): The row where a queen was last played.
+        col (int): The column where a queen was last played.
+    """
+    # X out all forward spots
+    for c in range(col + 1, len(board)):
+        board[row][c] = "x"
+    # X out all backwards spots
+    for c in range(col - 1, -1, -1):
+        board[row][c] = "x"
+    # X out all spots below
+    for r in range(row + 1, len(board)):
+        board[r][col] = "x"
+    # X out all spots above
+    for r in range(row - 1, -1, -1):
+        board[r][col] = "x"
+    # X out all spots diagonally down to the right
+    c = col + 1
+    for r in range(row + 1, len(board)):
+        if c >= len(board):
+            break
+        board[r][c] = "x"
+        c += 1
+    # X out all spots diagonally up to the left
+    c = col - 1
+    for r in range(row - 1, -1, -1):
+        if c < 0:
+            break
+        board[r][c]
+        c -= 1
+    # X out all spots diagonally up to the right
+    c = col + 1
+    for r in range(row - 1, -1, -1):
+        if c >= len(board):
+            break
+        board[r][c] = "x"
+        c += 1
+    # X out all spots diagonally down to the left
+    c = col - 1
+    for r in range(row + 1, len(board)):
+        if c < 0:
+            break
+        board[r][c] = "x"
+        c -= 1
+
+
+def recursive_solve(board, row, queens, solutions):
+    """Recursively solve an N-queens puzzle.
+
+    Args:
+        board (list): The current working chessboard.
+        row (int): The current working row.
+        queens (int): The current number of placed queens.
+        solutions (list): A list of lists of solutions.
+    Returns:
+        solutions
+    """
+    if queens == len(board):
+        solutions.append(get_solution(board))
+        return (solutions)
+
+    for c in range(len(board)):
+        if board[row][c] == " ":
+            tmp_board = board_deepcopy(board)
+            tmp_board[row][c] = "Q"
+            xout(tmp_board, row, c)
+            solutions = recursive_solve(tmp_board, row + 1,
+                                        queens + 1, solutions)
+
+    return (solutions)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: nqueens N")
+        sys.exit(1)
+    if sys.argv[1].isdigit() is False:
+        print("N must be a number")
+        sys.exit(1)
+    if int(sys.argv[1]) < 4:
+        print("N must be at least 4")
+        sys.exit(1)
+
+    board = init_board(int(sys.argv[1]))
+    solutions = recursive_solve(board, 0, 0, [])
+    for sol in solutions:
+        print(sol)
